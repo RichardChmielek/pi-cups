@@ -1,0 +1,15 @@
+version: '2' # v3 is not supported by RPI yet
+services:
+  pi-cups:
+    build:
+        context: ./
+        dockerfile: dockerfile
+    container_name: pi-cups
+    restart: unless-stopped
+    image: pi-cups
+    ports:
+      - "631:631"
+    volumes:
+      - /var/run/dbus:/var/run/dbus
+      - /dev/bus/usb:/dev/bus/usb
+    privileged: true
