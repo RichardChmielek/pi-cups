@@ -1,4 +1,6 @@
-FROM resin/rpi-raspbian
+FROM arm64v8/ubuntu
+ENV TZ=Europe/London
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update && apt-get install -y \
   curl \
@@ -11,14 +13,7 @@ RUN apt-get update && apt-get install -y \
   cups-client \
   cups-bsd \
   printer-driver-all \
-  lsb
-
-RUN sed -i "s/^#\ \+\(en_US.UTF-8\)/\1/" /etc/locale.gen \
-  && locale-gen en_US en_US.UTF-8
-
-ENV LANG=en_US.UTF-8 \
-  LC_ALL=en_US.UTF-8 \
-  LANGUAGE=en_US:en
+  tzdata
 
 RUN useradd \
   --groups=sudo,lp,lpadmin \
