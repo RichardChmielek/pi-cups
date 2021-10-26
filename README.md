@@ -1,3 +1,5 @@
+# Fork
+This fork allows for usage on arm64 Rpi along with the hanging issue for configuring tzdata and timezone
 # CUPS
 
 Printing with AirPrint from macbook or iPhone to Epson (L355) and Dymo (4XL) printers connected to Raspberry PI3 with docker
